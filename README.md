@@ -1,3 +1,3 @@
 # DruidUI
 
-Component library heavily inspired by PostHog's LemonUI and @shadcn/ui
+Design system heavily inspired by shadcn/ui and PostHog's LemonUI.
