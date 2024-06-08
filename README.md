@@ -1,6 +1,12 @@
 # DruidUI
 
-DruidUI is a collection of elegantly crafted React components, drawing inspiration from [shadcn/ui](https://github.com/shadcn-ui/ui) and [PostHog's LemonUI](https://github.com/PostHog/posthog). With focus on aesthetics and accessibility, DruidUI aims to enhance your React projects with visually appealing and intuitive user interfaces.
+DruidUI is a collection of elegantly crafted React components, drawing inspiration from [shadcn/ui](https://github.com/shadcn-ui/ui) and [PostHog's LemonUI](https://github.com/PostHog/posthog). Every component is designed to be easily copy-pasted into your project for maximum flexibility and customization.
+
+** Pre-requisites: **
+- Node.js
+- [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)
+- [Class Variance Authority](https://github.com/joe-bell/cva)
+- [clsx](https://github.com/lukeed/clsx)
 
 ## Contributing
 
