@@ -10,7 +10,7 @@ type ButtonColors = (typeof buttonColors)[number];
 const buttonVariants = cva(
   clsx(
     "inline-flex items-center justify-center gap-1",
-    "text-sm font-medium",
+    "truncate text-sm font-medium",
     "focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
   ),
   {
