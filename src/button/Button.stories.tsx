@@ -1,10 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { Button } from "@druid-ui/components/Button.tsx";
-import { Spinner } from "@druid-ui/components/Spinner.tsx";
-import { buttonColors, spinnerColors } from "@druid-ui/constants.ts";
+import Button from "@druid-ui/button/index.ts";
 import { ComponentProps } from "react";
 import { Box } from "lucide-react";
+import {
+  ButtonColors,
+  buttonColors,
+} from "@druid-ui/button/types.ts";
+import Spinner from "@druid-ui/spinner/Spinner.tsx";
+import { SpinnerColors } from "@druid-ui/spinner/types.ts";
 
 const meta = {
   title: "Button",
@@ -55,10 +59,7 @@ export const WithIcon: Story = {
 
 export const WithSpinner: Story = {
   render: ({ color = "default", ...args }: ComponentProps<typeof Button>) => {
-    const buttonSpinnerColor: Record<
-      (typeof buttonColors)[number],
-      (typeof spinnerColors)[number]
-    > = {
+    const buttonSpinnerColor: Record<ButtonColors, SpinnerColors> = {
       default: "default",
       primary: "light",
       danger: "light",
@@ -68,7 +69,13 @@ export const WithSpinner: Story = {
       <Button
         {...args}
         color={color}
-        icon={<Spinner size="small" color={buttonSpinnerColor[color]} />}
+        icon={
+          <Spinner
+            size="small"
+            color={buttonSpinnerColor[color]}
+            className="h-6 w-6"
+          />
+        }
       >
         Loading
       </Button>

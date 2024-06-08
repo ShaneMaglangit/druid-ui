@@ -1,9 +1,7 @@
 import { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@druid-ui/util.ts";
 import { cva, VariantProps } from "class-variance-authority";
-import { spinnerColors } from "@druid-ui/constants.ts";
-
-type SpinnerColors = (typeof spinnerColors)[number];
+import { SpinnerColors } from "@druid-ui/spinner/types.ts";
 
 const spinnerVariants = cva("inline animate-spin", {
   variants: {
@@ -27,7 +25,7 @@ const spinnerVariants = cva("inline animate-spin", {
 type SpinnerProps = HTMLAttributes<SVGSVGElement> &
   VariantProps<typeof spinnerVariants>;
 
-export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
+const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
   { className, color, size, ...props },
   ref,
 ) {
@@ -63,3 +61,5 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
     </svg>
   );
 });
+
+export default Spinner;

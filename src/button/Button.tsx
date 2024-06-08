@@ -3,9 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@druid-ui/util.ts";
 import { clsx } from "clsx";
-import { buttonColors } from "@druid-ui/constants.ts";
-
-type ButtonColors = (typeof buttonColors)[number];
+import { ButtonColors } from "@druid-ui/button/types.ts";
 
 const buttonVariants = cva(
   clsx(
@@ -39,43 +37,43 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     iconPlacement?: "left" | "right";
   };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(
-    {
-      asChild = false,
-      className,
-      color,
-      size,
-      children,
-      icon,
-      iconPlacement = "left",
-      ...props
-    },
-    ref,
-  ) {
-    const Component = asChild ? Slot : "button";
-    const variantClasses = buttonVariants({ color, size });
-
-    const iconSlot = <Slot className="h-[18px] w-[18px]">{icon}</Slot>;
-
-    return (
-      <Component
-        ref={ref}
-        className={cn(
-          variantClasses,
-          // Reducing horizontal padding keeps the visual weight of the button balanced.
-          clsx("px-3", {
-            ["pl-2"]: icon && iconPlacement === "left",
-            ["pr-2"]: icon && iconPlacement === "right",
-          }),
-          className,
-        )}
-        {...props}
-      >
-        {iconPlacement === "left" && iconSlot}
-        {children}
-        {iconPlacement === "right" && iconSlot}
-      </Component>
-    );
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    asChild = false,
+    className,
+    color,
+    size,
+    children,
+    icon,
+    iconPlacement = "left",
+    ...props
   },
-);
+  ref,
+) {
+  const Component = asChild ? Slot : "button";
+  const variantClasses = buttonVariants({ color, size });
+
+  const iconSlot = <Slot className="h-[18px] w-[18px]">{icon}</Slot>;
+
+  return (
+    <Component
+      ref={ref}
+      className={cn(
+        variantClasses,
+        // Reducing horizontal padding keeps the visual weight of the button balanced.
+        clsx("px-3", {
+          ["pl-2"]: icon && iconPlacement === "left",
+          ["pr-2"]: icon && iconPlacement === "right",
+        }),
+        className,
+      )}
+      {...props}
+    >
+      {iconPlacement === "left" && iconSlot}
+      {children}
+      {iconPlacement === "right" && iconSlot}
+    </Component>
+  );
+});
+
+export default Button;

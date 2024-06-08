@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Spinner } from "@druid-ui/components/Spinner.tsx";
-import { spinnerColors } from "@druid-ui/constants.ts";
+import Spinner from "@druid-ui/spinner/Spinner.tsx";
+import { spinnerColors } from "@druid-ui/spinner/types.ts";
 
 const meta = {
   title: "Spinner",

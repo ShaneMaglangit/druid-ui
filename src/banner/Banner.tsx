@@ -1,7 +1,7 @@
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@druid-ui/util.ts";
-import { BannerVariant } from "@druid-ui/components/Banner/types.ts";
+import { BannerVariant } from "@druid-ui/banner/types.ts";
 import { Slot } from "@radix-ui/react-slot";
 
 const bannerVariants = cva(

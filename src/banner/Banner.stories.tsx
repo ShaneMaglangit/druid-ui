@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { InfoIcon, TriangleAlert } from "lucide-react";
-import { bannerVariants } from "@druid-ui/components/Banner/types.ts";
-import Banner from "@druid-ui/components/Banner";
+import { bannerVariants } from "@druid-ui/banner/types.ts";
+import Banner from "@druid-ui/banner/index.ts";
 
 const meta = {
   title: "Banner",
