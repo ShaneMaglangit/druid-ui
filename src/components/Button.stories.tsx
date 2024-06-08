@@ -3,6 +3,7 @@ import { fn } from "@storybook/test";
 import { Button } from "@druid-ui/components/Button.tsx";
 import { Spinner } from "@druid-ui/components/Spinner.tsx";
 import { buttonColors, spinnerColors } from "@druid-ui/constants.ts";
+import { ComponentProps } from "react";
 
 const meta = {
   title: "Button",
@@ -11,7 +12,12 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  args: { onClick: fn(), color: "default", iconOrientation: "left" },
+  args: {
+    onClick: fn(),
+    color: "default",
+    iconOrientation: "left",
+    disabled: false,
+  },
   argTypes: {
     children: { table: { type: { summary: "ReactNode" } }, control: false },
     color: {
@@ -25,23 +31,21 @@ const meta = {
       options: ["left", "right"],
       control: { type: "select" },
     },
+    disabled: {
+      table: { type: { summary: "boolean" } },
+      control: { type: "boolean" },
+    },
     asChild: { table: { disable: true } },
   },
 } satisfies Meta<typeof Button>;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
+export const Default: Story = {
   args: { children: "Click me" },
-  render: (args: Story) => (
-    <div className="flex gap-1">
-      <Button {...args} />
-      <Button disabled {...args} />
-    </div>
-  ),
 };
 
-export const WithIcon = {
+export const WithIcon: Story = {
   args: {
     icon: (
       <svg
@@ -63,24 +67,27 @@ export const WithIcon = {
   },
 };
 
-const buttonSpinnerColor = {
-  default: "default",
-  primary: "light",
-  danger: "light",
-} satisfies Record<
-  (typeof buttonColors)[number],
-  (typeof spinnerColors)[number]
->;
+export const WithSpinner: Story = {
+  render: ({ color = "default", ...args }: ComponentProps<typeof Button>) => {
+    const buttonSpinnerColor: Record<
+      (typeof buttonColors)[number],
+      (typeof spinnerColors)[number]
+    > = {
+      default: "default",
+      primary: "light",
+      danger: "light",
+    };
 
-export const WithSpinner = {
-  render: (args: Story) => (
-    <Button
-      {...args}
-      icon={<Spinner size="small" color={buttonSpinnerColor[args.color]} />}
-    >
-      Loading
-    </Button>
-  ),
+    return (
+      <Button
+        {...args}
+        color={color}
+        icon={<Spinner size="small" color={buttonSpinnerColor[color]} />}
+      >
+        Loading
+      </Button>
+    );
+  },
 };
 
 export default meta;
