@@ -1,8 +1,11 @@
-import { ButtonHTMLAttributes, forwardRef } from "react";
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@druid-ui/util.ts";
 import { clsx } from "clsx";
+import { buttonColors } from "@druid-ui/constants.ts";
+
+type ButtonColors = (typeof buttonColors)[number];
 
 const buttonVariants = cva(
   clsx(
@@ -12,38 +15,70 @@ const buttonVariants = cva(
   ),
   {
     variants: {
-      variant: {
+      color: {
         default:
           "text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800",
         primary: "bg-primary-500 text-white hover:bg-primary-800",
         danger: "bg-danger-500 text-white hover:bg-danger-800",
-      },
+      } satisfies Record<ButtonColors, string>,
       size: {
-        default: "h-9 px-3 py-1",
+        default: "h-9 py-1",
       },
     },
     defaultVariants: {
-      variant: "default",
+      color: "default",
       size: "default",
     },
   },
 );
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & { asChild?: boolean };
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+    icon?: ReactNode;
+    iconOrientation?: "left" | "right";
+  };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
-    { asChild = false, className, variant, size, ...props },
+    {
+      asChild = false,
+      className,
+      color,
+      size,
+      children,
+      icon,
+      iconOrientation = "left",
+      ...props
+    },
     ref,
   ) {
     const Component = asChild ? Slot : "button";
+
+    const variantClasses = buttonVariants({
+      color,
+      size,
+      className,
+    });
+
+    const hasIcon = icon !== undefined;
+
     return (
       <Component
         ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(
+          clsx("px-3", {
+            ["pl-2"]: hasIcon && iconOrientation === "left",
+            ["pr-2"]: hasIcon && iconOrientation === "right",
+          }),
+          variantClasses,
+        )}
         {...props}
-      />
+      >
+        {iconOrientation === "left" && icon}
+        {children}
+        {iconOrientation === "right" && icon}
+      </Component>
     );
   },
 );

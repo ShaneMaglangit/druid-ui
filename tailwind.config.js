@@ -56,6 +56,21 @@ export default {
           900: "#735014",
         },
       },
+      animation: {
+        writhe: "writhe 1.5s infinite ease both",
+      },
+      keyframes: {
+        writhe: {
+          "0%, 100%": {
+            strokeDasharray: 70,
+            strokeDashoffset: -60,
+          },
+          "50%": {
+            strokeDasharray: 70,
+            strokeDashoffset: -30,
+          },
+        },
+      },
     },
   },
   plugins: [],
