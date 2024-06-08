@@ -36,7 +36,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     icon?: ReactNode;
-    iconOrientation?: "left" | "right";
+    iconPlacement?: "left" | "right";
   };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -48,36 +48,33 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       children,
       icon,
-      iconOrientation = "left",
+      iconPlacement = "left",
       ...props
     },
     ref,
   ) {
     const Component = asChild ? Slot : "button";
+    const variantClasses = buttonVariants({ color, size });
 
-    const variantClasses = buttonVariants({
-      color,
-      size,
-      className,
-    });
-
-    const hasIcon = icon !== undefined;
+    const iconSlot = <Slot className="h-[18px] w-[18px]">{icon}</Slot>;
 
     return (
       <Component
         ref={ref}
         className={cn(
-          clsx("px-3", {
-            ["pl-2"]: hasIcon && iconOrientation === "left",
-            ["pr-2"]: hasIcon && iconOrientation === "right",
-          }),
           variantClasses,
+          // Reducing horizontal padding keeps the visual weight of the button balanced.
+          clsx("px-3", {
+            ["pl-2"]: icon && iconPlacement === "left",
+            ["pr-2"]: icon && iconPlacement === "right",
+          }),
+          className,
         )}
         {...props}
       >
-        {iconOrientation === "left" && icon}
+        {iconPlacement === "left" && iconSlot}
         {children}
-        {iconOrientation === "right" && icon}
+        {iconPlacement === "right" && iconSlot}
       </Component>
     );
   },

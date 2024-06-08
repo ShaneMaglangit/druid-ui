@@ -4,6 +4,7 @@ import { Button } from "@druid-ui/components/Button.tsx";
 import { Spinner } from "@druid-ui/components/Spinner.tsx";
 import { buttonColors, spinnerColors } from "@druid-ui/constants.ts";
 import { ComponentProps } from "react";
+import { Box } from "lucide-react";
 
 const meta = {
   title: "Button",
@@ -15,7 +16,7 @@ const meta = {
   args: {
     onClick: fn(),
     color: "default",
-    iconOrientation: "left",
+    iconPlacement: "left",
     disabled: false,
   },
   argTypes: {
@@ -26,7 +27,7 @@ const meta = {
       control: { type: "select" },
     },
     icon: { table: { type: { summary: "ReactNode" } }, control: false },
-    iconOrientation: {
+    iconPlacement: {
       table: { type: { summary: "left | right" } },
       options: ["left", "right"],
       control: { type: "select" },
@@ -47,22 +48,7 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   args: {
-    icon: (
-      <svg
-        className="h-4 w-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M5 13l4 4L19 7"
-        />
-      </svg>
-    ),
+    icon: <Box />,
     children: "Click me",
   },
 };
