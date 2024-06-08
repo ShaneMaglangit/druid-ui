@@ -3,8 +3,9 @@
 # How to use
 # ./scripts/new.sh <component_name>
 
-COMPONENT_PATH="src/components/$1.tsx"
-STORY_PATH="src/components/$1.stories.tsx"
+COMPONENT_PATH="src/components/$1/$1.tsx"
+STORY_PATH="src/components/$1/$1.stories.tsx"
+INDEX_PATH="src/components/index.ts"
 
 # Create a new component
 cat <<EOF > $COMPONENT_PATH
@@ -38,4 +39,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export default meta;
+EOF
+
+# Create index file
+cat <<EOF > $INDEX_PATH
+export { default as $1 } from "./$1";
 EOF
