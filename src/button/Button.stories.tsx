@@ -2,9 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "@druid-ui/button/index.ts";
 import { ComponentProps } from "react";
 import { Box } from "lucide-react";
-import { ButtonColor, buttonColors } from "@druid-ui/button/types.ts";
+import {
+  ButtonColor,
+  buttonColors,
+  buttonVariants,
+} from "@druid-ui/button/types.ts";
 import Spinner from "@druid-ui/spinner/Spinner.tsx";
 import { SpinnerColor } from "@druid-ui/spinner/types.ts";
+import { hideArg } from "@druid-ui/storybookUtil.ts";
 
 const meta = {
   title: "Button",
@@ -31,6 +36,11 @@ const meta = {
       options: buttonColors,
       control: { type: "select" },
     },
+    variant: {
+      table: { type: { summary: "default | text" } },
+      options: buttonVariants,
+      control: { type: "select" },
+    },
     icon: { table: { type: { summary: "ReactNode" } }, control: false },
     iconPlacement: {
       table: { type: { summary: "left | right" } },
@@ -50,6 +60,54 @@ export const Default: Story = {};
 
 export const Link: Story = {
   args: { as: "link", href: "#", children: "Go to page" },
+};
+
+export const Variants: Story = {
+  argTypes: {
+    color: hideArg,
+    iconPlacement: hideArg,
+    disabled: hideArg,
+    as: hideArg,
+    variant: hideArg,
+    children: hideArg,
+    icon: hideArg,
+  },
+  render: () => (
+    <div className="flex flex-wrap gap-1">
+      {buttonColors.map((color) => (
+        <div className="flex flex-col gap-1" key={color}>
+          {buttonVariants.map((variant) => (
+            <>
+              <Button
+                key={`${color}-${variant}`}
+                color={color}
+                variant={variant}
+              >
+                Normal
+              </Button>
+              <Button
+                key={`${color}-${variant}-disabled`}
+                color={color}
+                variant={variant}
+                disabled
+              >
+                Disabled
+              </Button>
+              <Button
+                key={`${color}-${variant}-active`}
+                as="link"
+                active
+                color={color}
+                variant={variant}
+              >
+                Active
+              </Button>
+            </>
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
 };
 
 export const WithIcon: Story = { args: { icon: <Box size={18} /> } };

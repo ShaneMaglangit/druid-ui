@@ -24,7 +24,7 @@ EOF
 # Create a new story
 cat <<EOF > $STORY_PATH
 import { Meta, StoryObj } from "@storybook/react";
-import $1 from "@druid-ui/$1.tsx";
+import $1 from "./$1.tsx";
 
 const meta = {
   title: "$1",

@@ -7,7 +7,7 @@ const Divider = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
       <div
         ref={ref}
         className={cn(
-          "bg-border-dark dark:bg-border-light h-[1px] w-full",
+          "bg-border-light dark:bg-border-dark my-1 h-[1px] w-full",
           className,
         )}
         {...props}
