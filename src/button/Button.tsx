@@ -1,7 +1,6 @@
 import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
-  ForwardedRef,
   forwardRef,
   ReactNode,
 } from "react";
@@ -44,7 +43,7 @@ type ButtonProps = {
   | (AnchorHTMLAttributes<HTMLAnchorElement> & { as: "link" })
 );
 
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
   function Button(
     {
       className,
@@ -69,32 +68,38 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       className,
     );
 
-    const content = (
-      <>
-        {iconPlacement === "left" && icon}
-        {children}
-        {iconPlacement === "right" && icon}
-      </>
-    );
+    if (props.as === "link") {
+      return (
+        <a ref={ref} className={classes} {...props}>
+          <ButtonContent icon={icon} iconPlacement={iconPlacement}>
+            {children}
+          </ButtonContent>
+        </a>
+      );
+    }
 
-    return props.as === "link" ? (
-      <a
-        ref={ref as ForwardedRef<HTMLAnchorElement>}
-        className={classes}
-        {...props}
-      >
-        {content}
-      </a>
-    ) : (
-      <button
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-        className={classes}
-        {...props}
-      >
-        {content}
+    return (
+      <button ref={ref} className={classes} {...props}>
+        <ButtonContent icon={icon} iconPlacement={iconPlacement}>
+          {children}
+        </ButtonContent>
       </button>
     );
   },
 );
+
+function ButtonContent({
+  children,
+  icon,
+  iconPlacement,
+}: Pick<ButtonProps, "children" | "iconPlacement" | "icon">) {
+  return (
+    <>
+      {iconPlacement === "left" && icon}
+      {children}
+      {iconPlacement === "right" && icon}
+    </>
+  );
+}
 
 export default Button;
