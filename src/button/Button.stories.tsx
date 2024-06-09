@@ -9,7 +9,7 @@ import {
 } from "@druid-ui/button/types.ts";
 import Spinner from "@druid-ui/spinner/Spinner.tsx";
 import { SpinnerColor } from "@druid-ui/spinner/types.ts";
-import { hideArg } from "@druid-ui/storybookUtil.ts";
+import { hideArg } from "@druid-ui/storybook/util.ts";
 
 const meta = {
   title: "Button",
