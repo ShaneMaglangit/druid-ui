@@ -1,3 +1,5 @@
+import { gray } from "tailwindcss/colors";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -18,6 +20,10 @@ export default {
           DEFAULT: "#FFFFFF",
           muted: "#8E8E93",
           trace: "#56575D",
+        },
+        border: {
+          dark: gray[700],
+          light: gray[200],
         },
         primary: {
           50: "#E7EDFF",

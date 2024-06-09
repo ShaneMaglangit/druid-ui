@@ -4,7 +4,7 @@ import { BannerVariant } from "@druid-ui/banner/types.ts";
 import { InfoIcon, TriangleAlert } from "lucide-react";
 
 const baseStyle =
-  "flex items-start gap-2 rounded-md border border-gray-200 p-3 font-medium dark:border-gray-700";
+  "flex items-start gap-2 rounded-md border border-border-light p-3 font-medium dark:border-border-dark";
 
 const colorStyles = {
   info: "bg-gray-100 dark:bg-gray-800 dark:text-white",
