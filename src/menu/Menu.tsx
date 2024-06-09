@@ -15,7 +15,7 @@ export const MenuList = forwardRef<
   return (
     <ul
       ref={ref}
-      className={cn("flex flex-col gap-[1px]", className)}
+      className={cn("flex flex-col gap-[0.125rem]", className)}
       {...props}
     />
   );
@@ -46,7 +46,7 @@ const Menu = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
       <div
         ref={ref}
         className={cn(
-          "border-border-light dark:border-border-dark flex flex-col gap-[1px] rounded border p-1",
+          "border-border-light dark:border-border-dark flex flex-col gap-[1px] rounded-md border p-1",
           className,
         )}
         {...props}
