@@ -2,13 +2,22 @@
 
 DruidUI is a collection of elegantly crafted React components, drawing inspiration from [shadcn/ui](https://github.com/shadcn-ui/ui) and [PostHog's LemonUI](https://github.com/PostHog/posthog). Every component is designed to be easily copy-pasted into your project for maximum flexibility and customization.
 
-** Pre-requisites: **
+**Pre-requisites:**
 
 Here are the NPM dependencies that you will need to use DruidUI components:
 
 - [Tailwind CSS](https://tailwindcss.com/docs/installation)
 - [clsx](https://github.com/lukeed/clsx)
+- [Tailwind Merge](https://github.com/dcastil/tailwind-merge)
 - [Lucide React Icons](https://github.com/lucide-icons/lucide) (Optional)
+
+## Philosophies
+
+DruidUI is built with the following philosophies in mind:
+
+- **Minimal dependencies:** DruidUI aims to minimize dependencies to keep your project lightweight and fast.
+- **Fully customizable:** Having a copy-paste components instead of an NPM library, you get max control. Our opinions on components are just that, opinions.
+- **Free and open-source:** DruidUI is free to use and open-source, so you can use it in your personal and commercial projects (we won't sue you, promise).
 
 ## Contributing
 
