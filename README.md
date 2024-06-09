@@ -2,9 +2,16 @@
 
 DruidUI is a collection of elegantly crafted React components, drawing inspiration from [shadcn/ui](https://github.com/shadcn-ui/ui) and [PostHog's LemonUI](https://github.com/PostHog/posthog). Every component is designed to be easily copy-pasted into your project for maximum flexibility and customization.
 
-**Pre-requisites:**
+## Table of Contents
 
-Here are the NPM dependencies that you will need to use DruidUI components:
+- [Pre-requisites](#pre-requisites)
+- [Philosophies](#philosophies)
+- [Usage](#usage)
+- [Contributing](#contributing)
+
+## Pre-requisites
+
+To use DruidUI components, ensure you have the following NPM dependencies installed:
 
 - [Tailwind CSS](https://tailwindcss.com/docs/installation)
 - [clsx](https://github.com/lukeed/clsx)
@@ -13,30 +20,35 @@ Here are the NPM dependencies that you will need to use DruidUI components:
 
 ## Philosophies
 
-DruidUI is built with the following philosophies in mind:
+DruidUI is built with the following principles in mind:
 
-- **Minimal dependencies:** DruidUI aims to minimize dependencies to keep your project lightweight and fast.
-- **Fully customizable:** Having a copy-paste components instead of an NPM library, you get maximum control. Our opinions on components are just that, opinions.
-- **Free and open-source:** DruidUI is free to use and open-source, so you can use it in your personal and commercial projects (we won't sue you, promise).
+- **Minimal dependencies:** Keep your project lightweight and fast.
+- **Fully customizable:** Copy-paste components offer maximum control and flexibility.
+- **Free and open-source:** Use DruidUI in personal and commercial projects without restrictions.
 
 ## Usage
 
-1. Install the necessary dependencies:
+Follow these steps to integrate DruidUI components into your project:
 
-   ```bash
-   yarn add tailwindcss clsx tailwind-merge lucide-react
-   ```
+1. **Install the necessary dependencies:**
 
-   - You can omit `lucide-react` and replace all its usage with your preferred icon library/set.
+    ```bash
+    yarn add tailwindcss clsx tailwind-merge lucide-react
+    ```
 
-2. Copy `index.css` into your global tailwind CSS file.
-3. Copy `tailwind.config.ts` into your project (or incorporate it into your existing `tailwind.config.js` file)
-4. Copy `util.ts` into your project.
-5. Copy the component files into your project.
-   - Option A: Copy the entire subdirectory of the component (with storybook).
-   - Option B: Only copy `<component>.tsx` and `types.ts` files (no storybook).
-     - Merge the `types.ts` into the `<component>.tsx` file for simplicity. Remember to un-export the constant and types to keep React's fast-refresh.
-6. That's it! You can now use the components in your project.
+    > You can omit `lucide-react` and replace its usage with your preferred icon library/set.
+
+2. **Copy the necessary files:**
+
+   - Copy `index.css` into your global Tailwind CSS file.
+   - Copy `tailwind.config.ts` into your project, or integrate it into your existing `tailwind.config.js` file.
+   - Copy `util.ts` into your project.
+   - Copy the component files into your project:
+     - **Option A:** Copy the entire subdirectory of the component (with Storybook).
+     - **Option B:** Only copy `<component>.tsx` and `types.ts` files (no Storybook).
+       - Merge the `types.ts` into the `<component>.tsx` file for simplicity. Remember to un-export the constant and types to keep React's fast-refresh.
+
+3. **Start using the components in your project.**
 
 ## Contributing
 
