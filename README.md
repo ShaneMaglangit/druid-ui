@@ -16,7 +16,7 @@ Here are the NPM dependencies that you will need to use DruidUI components:
 DruidUI is built with the following philosophies in mind:
 
 - **Minimal dependencies:** DruidUI aims to minimize dependencies to keep your project lightweight and fast.
-- **Fully customizable:** Having a copy-paste components instead of an NPM library, you get max control. Our opinions on components are just that, opinions.
+- **Fully customizable:** Having a copy-paste components instead of an NPM library, you get maximum control. Our opinions on components are just that, opinions.
 - **Free and open-source:** DruidUI is free to use and open-source, so you can use it in your personal and commercial projects (we won't sue you, promise).
 
 ## Contributing
