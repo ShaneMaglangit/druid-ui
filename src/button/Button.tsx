@@ -22,16 +22,8 @@ const colorStyles = {
 } satisfies Record<ButtonColor, string>;
 
 const sizeStyles = {
-  button: {
-    default: "h-9 py-1",
-  },
-  icon: {
-    default: "h-[18px] w-[18px]",
-  },
-} satisfies {
-  button: Record<ButtonSize, string>;
-  icon: Record<ButtonSize, string>;
-};
+  default: "h-9 py-1",
+} satisfies Record<ButtonSize, string>;
 
 type ButtonProps = {
   color?: ButtonColor;
@@ -59,7 +51,7 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
     const classes = cn(
       baseStyle,
       colorStyles[color],
-      sizeStyles.button[size],
+      sizeStyles[size],
       // Reducing horizontal padding keeps the visual weight of the button balanced.
       clsx("px-3", {
         ["pl-2"]: icon && iconPlacement === "left",

@@ -47,10 +47,13 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
 export const Link: Story = {
   args: { as: "link", href: "#", children: "Go to page" },
 };
-export const WithIcon: Story = { args: { icon: <Box /> } };
+
+export const WithIcon: Story = { args: { icon: <Box size={18} /> } };
+
 export const WithSpinner: Story = {
   render: ({ color = "default", ...args }: ComponentProps<typeof Button>) => {
     const buttonSpinnerColor = {
