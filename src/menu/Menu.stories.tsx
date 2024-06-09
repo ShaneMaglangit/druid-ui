@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Menu, { MenuHeader, MenuItem, MenuList } from "./Menu.tsx";
+import Menu, { MenuHeader, MenuListItem, MenuList } from "./Menu.tsx";
 import Button from "@druid-ui/button";
 import { Divider } from "@druid-ui/divider";
 
@@ -21,17 +21,17 @@ export const Default: Story = {
     <Menu className="w-64">
       <MenuList>
         {["Home", "Blog", "Shop"].map((item) => (
-          <MenuItem key={item}>
+          <MenuListItem key={item}>
             <Button as="link" href="#" fullWidth className="justify-start">
               {item}
             </Button>
-          </MenuItem>
+          </MenuListItem>
         ))}
-        <MenuItem>
+        <MenuListItem>
           <Button as="link" href="#" active fullWidth className="justify-start">
             Contact
           </Button>
-        </MenuItem>
+        </MenuListItem>
       </MenuList>
     </Menu>
   ),
@@ -43,36 +43,35 @@ export const WithHeader: Story = {
       <MenuHeader component="h5">Social</MenuHeader>
       <MenuList>
         {["Facebook", "Twitter", "Instagram"].map((item) => (
-          <MenuItem key={item}>
+          <MenuListItem key={item}>
             <Button as="link" href="#" fullWidth className="justify-start">
               {item}
             </Button>
-          </MenuItem>
+          </MenuListItem>
         ))}
       </MenuList>
       <Divider />
       <MenuHeader component="h5">Account</MenuHeader>
       <MenuList>
         {["Profile", "Settings"].map((item) => (
-          <MenuItem key={item}>
+          <MenuListItem key={item}>
             <Button as="link" href="#" fullWidth className="justify-start">
               {item}
             </Button>
-          </MenuItem>
+          </MenuListItem>
         ))}
-        <MenuItem>
-          <Button
-            as="link"
-            href="#"
-            color="danger"
-            variant="text"
-            fullWidth
-            className="justify-start"
-          >
-            Logout
-          </Button>
-        </MenuItem>
       </MenuList>
+      <Divider />
+      <Button
+        as="link"
+        href="#"
+        color="danger"
+        variant="text"
+        fullWidth
+        className="justify-start"
+      >
+        Logout
+      </Button>
     </Menu>
   ),
 };

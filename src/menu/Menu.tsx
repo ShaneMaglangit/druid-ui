@@ -1,10 +1,10 @@
 import { forwardRef, HTMLAttributes, LiHTMLAttributes } from "react";
 import { cn } from "@druid-ui/util.ts";
 
-export const MenuItem = forwardRef<
+export const MenuListItem = forwardRef<
   HTMLLIElement,
   LiHTMLAttributes<HTMLLIElement>
->(function MenuItem(props, ref) {
+>(function MenuListItem(props, ref) {
   return <li ref={ref} {...props} />;
 });
 
