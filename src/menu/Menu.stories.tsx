@@ -37,7 +37,7 @@ export const Default: Story = {
   ),
 };
 
-export const WithHeader: Story = {
+export const WithSections: Story = {
   render: () => (
     <Menu className="w-64">
       <MenuHeader component="h5">Social</MenuHeader>
