@@ -19,6 +19,25 @@ DruidUI is built with the following philosophies in mind:
 - **Fully customizable:** Having a copy-paste components instead of an NPM library, you get maximum control. Our opinions on components are just that, opinions.
 - **Free and open-source:** DruidUI is free to use and open-source, so you can use it in your personal and commercial projects (we won't sue you, promise).
 
+## Usage
+
+1. Install the necessary dependencies:
+
+   ```bash
+   yarn add tailwindcss clsx tailwind-merge lucide-react
+   ```
+
+   - You can omit `lucide-react` and remove all its usage with your preferred icon library/set.
+
+2. Copy `index.css` into your global tailwind CSS file.
+3. Copy `tailwind.config.ts` into your project (or incorporate it into your existing `tailwind.config.js` file)
+4. Copy `util.ts` into your project.
+5. Copy the component files into your project.
+   - Option A: Copy the entire subdirectory of the component (with storybook).
+   - Option B: Only copy `<component>.tsx` and `types.ts` files (no storybook).
+     - Merge the `types.ts` into the `<component>.tsx` file for simplicity. Remember to un-export the constant and types to keep React's fast-refresh.
+6. That's it! You can now use the components in your project.
+
 ## Contributing
 
 Contributions to DruidUI are welcome and encouraged! To get started:
