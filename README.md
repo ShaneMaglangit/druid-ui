@@ -6,8 +6,8 @@ DruidUI is a collection of elegantly crafted React components, drawing inspirati
 
 Here are the NPM dependencies that you will need to use DruidUI components:
 
-- [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)
-- [Class Variance Authority](https://github.com/joe-bell/cva)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
+- [Radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot#installation)
 - [clsx](https://github.com/lukeed/clsx)
 
 ## Contributing

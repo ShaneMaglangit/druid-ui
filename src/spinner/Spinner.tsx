@@ -1,39 +1,35 @@
 import { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@druid-ui/util.ts";
-import { cva, VariantProps } from "class-variance-authority";
-import { SpinnerColors } from "@druid-ui/spinner/types.ts";
+import { SpinnerColor, SpinnerSize } from "@druid-ui/spinner/types.ts";
 
-const spinnerVariants = cva("inline animate-spin", {
-  variants: {
-    color: {
-      default: "text-black dark:text-white",
-      primary: "text-primary-500",
-      danger: "text-danger-500",
-      light: "text-white",
-    } satisfies Record<SpinnerColors, string>,
-    size: {
-      default: "h-8 w-8",
-      small: "h-6 w-6",
-    },
-  },
-  defaultVariants: {
-    color: "default",
-    size: "default",
-  },
-});
+const baseStyle = "inline animate-spin";
 
-type SpinnerProps = HTMLAttributes<SVGSVGElement> &
-  VariantProps<typeof spinnerVariants>;
+const colorStyles = {
+  default: "text-black dark:text-white",
+  primary: "text-primary-500",
+  danger: "text-danger-500",
+  light: "text-white",
+} satisfies Record<SpinnerColor, string>;
+
+const sizeStyles = {
+  default: "h-8 w-8",
+  small: "h-6 w-6",
+} satisfies Record<SpinnerSize, string>;
+
+type SpinnerProps = HTMLAttributes<SVGSVGElement> & {
+  color?: SpinnerColor;
+  size?: SpinnerSize;
+};
 
 const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
-  { className, color, size, ...props },
+  { color = "default", size = "default", className, ...props },
   ref,
 ) {
   return (
     <svg
       ref={ref}
       role="status"
-      className={cn(spinnerVariants({ color, size, className }))}
+      className={cn(baseStyle, colorStyles[color], sizeStyles[size], className)}
       aria-hidden="true"
       viewBox="0 0 48 48"
       fill="none"

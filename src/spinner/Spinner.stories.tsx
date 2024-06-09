@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Spinner from "@druid-ui/spinner/Spinner.tsx";
-import { spinnerColors } from "@druid-ui/spinner/types.ts";
+import { spinnerColors, spinnerSizes } from "@druid-ui/spinner/types.ts";
 
 const meta = {
   title: "Spinner",
@@ -16,7 +16,7 @@ const meta = {
       control: { type: "select" },
     },
     size: {
-      options: ["default", "small"],
+      options: spinnerSizes,
       control: { type: "select" },
     },
   },
