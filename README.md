@@ -27,7 +27,7 @@ DruidUI is built with the following philosophies in mind:
    yarn add tailwindcss clsx tailwind-merge lucide-react
    ```
 
-   - You can omit `lucide-react` and remove all its usage with your preferred icon library/set.
+   - You can omit `lucide-react` and replace all its usage with your preferred icon library/set.
 
 2. Copy `index.css` into your global tailwind CSS file.
 3. Copy `tailwind.config.ts` into your project (or incorporate it into your existing `tailwind.config.js` file)
