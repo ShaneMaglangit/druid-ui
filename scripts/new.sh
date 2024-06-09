@@ -3,9 +3,12 @@
 # How to use
 # ./scripts/new.sh <component_name>
 
-COMPONENT_PATH="src/components/$1/$1.tsx"
-STORY_PATH="src/components/$1/$1.stories.tsx"
-INDEX_PATH="src/components/index.ts"
+DIR=$(echo $1 | tr '[:upper:]' '[:lower:]')
+COMPONENT_PATH="src/$DIR/$1.tsx"
+STORY_PATH="src/$DIR/$1.stories.tsx"
+INDEX_PATH="src/$DIR/index.ts"
+
+mkdir "src/$DIR"
 
 # Create a new component
 cat <<EOF > $COMPONENT_PATH
@@ -21,7 +24,7 @@ EOF
 # Create a new story
 cat <<EOF > $STORY_PATH
 import { Meta, StoryObj } from "@storybook/react";
-import $1 from "@druid-ui/components/$1.tsx";
+import $1 from "@druid-ui/$1.tsx";
 
 const meta = {
   title: "$1",
