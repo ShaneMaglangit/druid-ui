@@ -4,12 +4,12 @@ DruidUI is a collection of elegantly crafted React components, drawing inspirati
 
 ## Table of Contents
 
-- [Pre-requisites](#pre-requisites)
+- [Requirements](#requirements)
 - [Philosophies](#philosophies)
 - [Usage](#usage)
 - [Contributing](#contributing)
 
-## Pre-requisites
+## Requirements
 
 To use DruidUI components, ensure you have the following NPM dependencies installed:
 
