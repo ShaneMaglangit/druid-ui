@@ -10,7 +10,7 @@ import { ButtonColor, ButtonVariant } from "@druid-ui/button/types.ts";
 
 const baseStyle = clsx(
   "inline-flex items-center justify-center gap-1 rounded-md disabled:opacity-50",
-  "truncate font-medium leading-[normal]",
+  "truncate font-medium",
   "focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none",
 );
 

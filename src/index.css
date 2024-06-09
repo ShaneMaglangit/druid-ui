@@ -5,3 +5,7 @@
 :root {
   font-size: 14px;
 }
+
+button {
+  line-height: normal
+}
