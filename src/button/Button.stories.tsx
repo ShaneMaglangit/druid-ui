@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import Button from "@druid-ui/button/index.ts";
 import { ComponentProps } from "react";
 import { Box } from "lucide-react";
@@ -15,12 +14,17 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    onClick: fn(),
     color: "default",
     iconPlacement: "left",
     disabled: false,
+    children: "Click me",
   },
   argTypes: {
+    as: {
+      table: { type: { summary: "button | link" } },
+      options: ["button", "link"],
+      control: { type: "select" },
+    },
     children: { table: { type: { summary: "ReactNode" } }, control: false },
     color: {
       table: { type: { summary: buttonColors.join("|") } },
@@ -37,23 +41,16 @@ const meta = {
       table: { type: { summary: "boolean" } },
       control: { type: "boolean" },
     },
-    asChild: { table: { disable: true } },
   },
 } satisfies Meta<typeof Button>;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: { children: "Click me" },
+export const Default: Story = {};
+export const Link: Story = {
+  args: { as: "link", href: "#", children: "Go to page" },
 };
-
-export const WithIcon: Story = {
-  args: {
-    icon: <Box />,
-    children: "Click me",
-  },
-};
-
+export const WithIcon: Story = { args: { icon: <Box /> } };
 export const WithSpinner: Story = {
   render: ({ color = "default", ...args }: ComponentProps<typeof Button>) => {
     const buttonSpinnerColor = {

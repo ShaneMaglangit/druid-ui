@@ -1,5 +1,10 @@
-import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
-import { Slot } from "@radix-ui/react-slot";
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ForwardedRef,
+  forwardRef,
+  ReactNode,
+} from "react";
 import { cn } from "@druid-ui/util.ts";
 import { clsx } from "clsx";
 import { ButtonColor, ButtonSize } from "@druid-ui/button/types.ts";
@@ -29,51 +34,67 @@ const sizeStyles = {
   icon: Record<ButtonSize, string>;
 };
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  asChild?: boolean;
+type ButtonProps = {
   color?: ButtonColor;
   size?: ButtonSize;
   icon?: ReactNode;
   iconPlacement?: "left" | "right";
-};
+} & (
+  | (ButtonHTMLAttributes<HTMLButtonElement> & { as?: "button" })
+  | (AnchorHTMLAttributes<HTMLAnchorElement> & { as: "link" })
+);
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    asChild = false,
-    className,
-    color = "default",
-    size = "default",
-    children,
-    icon,
-    iconPlacement = "left",
-    ...props
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  function Button(
+    {
+      className,
+      color = "default",
+      size = "default",
+      children,
+      icon,
+      iconPlacement = "left",
+      ...props
+    },
+    ref,
+  ) {
+    const classes = cn(
+      baseStyle,
+      colorStyles[color],
+      sizeStyles.button[size],
+      // Reducing horizontal padding keeps the visual weight of the button balanced.
+      clsx("px-3", {
+        ["pl-2"]: icon && iconPlacement === "left",
+        ["pr-2"]: icon && iconPlacement === "right",
+      }),
+      className,
+    );
+
+    const content = (
+      <>
+        {iconPlacement === "left" && icon}
+        {children}
+        {iconPlacement === "right" && icon}
+      </>
+    );
+
+    return props.as === "link" ? (
+      <a
+        ref={ref as ForwardedRef<HTMLAnchorElement>}
+        className={classes}
+        {...props}
+      >
+        {content}
+      </a>
+    ) : (
+      <button
+        ref={ref as ForwardedRef<HTMLButtonElement>}
+        className={classes}
+        {...props}
+      >
+        {content}
+      </button>
+    );
   },
-  ref,
-) {
-  const Component = asChild ? Slot : "button";
-  const iconSlot = <Slot className={sizeStyles.icon[size]}>{icon}</Slot>;
-
-  return (
-    <Component
-      ref={ref}
-      className={cn(
-        baseStyle,
-        colorStyles[color],
-        sizeStyles.button[size],
-        // Reducing horizontal padding keeps the visual weight of the button balanced.
-        clsx("px-3", {
-          ["pl-2"]: icon && iconPlacement === "left",
-          ["pr-2"]: icon && iconPlacement === "right",
-        }),
-        className,
-      )}
-      {...props}
-    >
-      {iconPlacement === "left" && iconSlot}
-      {children}
-      {iconPlacement === "right" && iconSlot}
-    </Component>
-  );
-});
+);
 
 export default Button;
