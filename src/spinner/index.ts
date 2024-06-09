@@ -1,1 +1,1 @@
-export { default } from "./Spinner.tsx";
+export * from "./Spinner.tsx";

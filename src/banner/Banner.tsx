@@ -22,7 +22,7 @@ type BannerProps = HTMLAttributes<HTMLDivElement> & {
   variant?: BannerVariant;
 };
 
-const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
+export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
   { variant = "info", className, children, ...props },
   ref,
 ) {
@@ -37,5 +37,3 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
     </div>
   );
 });
-
-export default Banner;

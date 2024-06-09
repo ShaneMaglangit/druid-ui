@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { bannerVariants } from "@druid-ui/banner/types.ts";
-import Banner from "@druid-ui/banner/index.ts";
+import { Banner } from "@druid-ui/banner";
 
 const meta = {
   title: "Banner",

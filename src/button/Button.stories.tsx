@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from "@druid-ui/button/index.ts";
 import { ComponentProps } from "react";
 import { Box } from "lucide-react";
 import {
@@ -8,9 +7,10 @@ import {
   ButtonVariant,
   buttonVariants,
 } from "@druid-ui/button/types.ts";
-import Spinner from "@druid-ui/spinner/Spinner.tsx";
+import { Spinner } from "@druid-ui/spinner";
 import { SpinnerColor } from "@druid-ui/spinner/types.ts";
 import { hideArg } from "@druid-ui/storybook/util.ts";
+import { Button } from "@druid-ui/button";
 
 const meta = {
   title: "Button",

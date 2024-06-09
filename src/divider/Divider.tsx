@@ -1,7 +1,7 @@
 import { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@druid-ui/util.ts";
 
-const Divider = forwardRef<
+export const Divider = forwardRef<
   HTMLDivElement,
   Omit<HTMLAttributes<HTMLDivElement>, "children">
 >(function Divider({ className, ...props }, ref) {
@@ -16,5 +16,3 @@ const Divider = forwardRef<
     />
   );
 });
-
-export default Divider;

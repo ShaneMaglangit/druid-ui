@@ -21,7 +21,7 @@ type SpinnerProps = HTMLAttributes<SVGSVGElement> & {
   size?: SpinnerSize;
 };
 
-const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
+export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
   { color = "default", size = "default", className, ...props },
   ref,
 ) {
@@ -57,5 +57,3 @@ const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(function Button(
     </svg>
   );
 });
-
-export default Spinner;

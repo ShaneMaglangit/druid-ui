@@ -55,7 +55,7 @@ type ButtonProps = {
   | (AnchorHTMLAttributes<HTMLAnchorElement> & { as: "link"; active?: boolean })
 );
 
-const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
   function Button(
     {
       className,
@@ -113,5 +113,3 @@ function ButtonContent({
     </>
   );
 }
-
-export default Button;

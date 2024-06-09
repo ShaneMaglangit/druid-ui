@@ -40,7 +40,7 @@ export const MenuHeader = forwardRef<
   );
 });
 
-const Menu = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+export const Menu = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   function Menu({ className, ...props }, ref) {
     return (
       <div
@@ -54,5 +54,3 @@ const Menu = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     );
   },
 );
-
-export default Menu;

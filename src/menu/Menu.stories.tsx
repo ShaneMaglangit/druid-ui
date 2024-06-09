@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Menu, { MenuHeader, MenuListItem, MenuList } from "./Menu.tsx";
-import Button from "@druid-ui/button";
+import { Menu, MenuHeader, MenuListItem, MenuList } from "@druid-ui/menu";
+import { Button } from "@druid-ui/button";
 import { Divider } from "@druid-ui/divider";
 import { LogOut } from "lucide-react";
 

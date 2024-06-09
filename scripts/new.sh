@@ -19,17 +19,15 @@ mkdir "src/$DIR"
 cat <<EOF > $COMPONENT_PATH
 import { forwardRef } from "react";
 
-const $1 = forwardRef<HTMLDivElement>(function $1(props, ref) {
+export const $1 = forwardRef<HTMLDivElement>(function $1(props, ref) {
   return <div ref={ref} {...props}></div>;
 });
-
-export default $1;
 EOF
 
 # Create a new story
 cat <<EOF > $STORY_PATH
 import { Meta, StoryObj } from "@storybook/react";
-import $1 from "./$1.tsx";
+import { $1 } from "@druid-ui/$DIR";
 
 const meta = {
   title: "$1",
@@ -51,5 +49,5 @@ EOF
 
 # Create index file
 cat <<EOF > $INDEX_PATH
-export { default as $1 } from "./$1";
+export * from "./$1";
 EOF
