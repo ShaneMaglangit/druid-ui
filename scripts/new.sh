@@ -8,6 +8,11 @@ COMPONENT_PATH="src/$DIR/$1.tsx"
 STORY_PATH="src/$DIR/$1.stories.tsx"
 INDEX_PATH="src/$DIR/index.ts"
 
+if [ -d "src/$DIR" ]; then
+  echo "Directory already exists"
+  exit 1
+fi
+
 mkdir "src/$DIR"
 
 # Create a new component
