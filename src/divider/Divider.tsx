@@ -1,19 +1,20 @@
 import { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@druid-ui/util.ts";
 
-const Divider = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  function Divider({ className, ...props }, ref) {
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "bg-border-light dark:bg-border-dark my-1 h-[1px] w-full",
-          className,
-        )}
-        {...props}
-      ></div>
-    );
-  },
-);
+const Divider = forwardRef<
+  HTMLDivElement,
+  Omit<HTMLAttributes<HTMLDivElement>, "children">
+>(function Divider({ className, ...props }, ref) {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "my-1 h-[1px] w-full bg-border-light dark:bg-border-dark",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
 
 export default Divider;

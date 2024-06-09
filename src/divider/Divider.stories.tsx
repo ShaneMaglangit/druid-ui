@@ -17,9 +17,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <div className="flex flex-col gap-1">
-      <p>First paragraph</p>
+      <h5 className="text-md font-medium">Replication Lag</h5>
       <Divider />
-      <p>Second paragraph</p>
+      <p>
+        Creating copies of a database is a common strategy to improve the
+        availability of data storage.
+      </p>
     </div>
   ),
 };

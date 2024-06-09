@@ -21,9 +21,9 @@ const meta = {
   tags: ["autodocs"],
   args: {
     color: "default",
-    iconPlacement: "left",
     disabled: false,
     children: "Click me",
+    active: false,
   },
   argTypes: {
     as: {
@@ -31,7 +31,6 @@ const meta = {
       options: ["button", "link"],
       control: { type: "select" },
     },
-    children: { table: { type: { summary: "ReactNode" } }, control: false },
     color: {
       table: { type: { summary: buttonColors.join("|") } },
       options: buttonColors,
@@ -42,16 +41,13 @@ const meta = {
       options: buttonVariants,
       control: { type: "select" },
     },
-    icon: { table: { type: { summary: "ReactNode" } }, control: false },
-    iconPlacement: {
-      table: { type: { summary: "left | right" } },
-      options: ["left", "right"],
-      control: { type: "select" },
-    },
-    disabled: {
+    active: {
       table: { type: { summary: "boolean" } },
       control: { type: "boolean" },
     },
+    children: { table: { type: { summary: "ReactNode" } }, control: false },
+    startIcon: { table: { type: { summary: "ReactNode" } }, control: false },
+    endIcon: { table: { type: { summary: "ReactNode" } }, control: false },
   },
 } satisfies Meta<typeof Button>;
 
@@ -60,18 +56,19 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const Link: Story = {
+  argTypes: { children: hideArg, startIcon: hideArg, endIcon: hideArg },
   args: { as: "link", href: "#", children: "Go to page" },
 };
 
 export const Variants: Story = {
   argTypes: {
     color: hideArg,
-    iconPlacement: hideArg,
     disabled: hideArg,
     as: hideArg,
     variant: hideArg,
     children: hideArg,
-    icon: hideArg,
+    startIcon: hideArg,
+    endIcon: hideArg,
   },
   render: () => (
     <div className="flex flex-wrap gap-1">
@@ -111,9 +108,13 @@ export const Variants: Story = {
   ),
 };
 
-export const WithIcon: Story = { args: { icon: <Box size={18} /> } };
+export const WithIcon: Story = {
+  argTypes: { children: hideArg, startIcon: hideArg, endIcon: hideArg },
+  args: { startIcon: <Box size={18} /> },
+};
 
 export const WithSpinner: Story = {
+  argTypes: { children: hideArg, startIcon: hideArg, endIcon: hideArg },
   render: ({
     color = "default",
     variant = "default",
@@ -130,11 +131,8 @@ export const WithSpinner: Story = {
         {...args}
         color={color}
         variant={variant}
-        icon={
-          <Spinner
-            color={buttonSpinnerColor[color][variant]}
-            className="h-6 w-6"
-          />
+        startIcon={
+          <Spinner color={buttonSpinnerColor[color][variant]} size="small" />
         }
       >
         Loading

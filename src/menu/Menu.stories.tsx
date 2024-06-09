@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Menu, { MenuHeader, MenuListItem, MenuList } from "./Menu.tsx";
 import Button from "@druid-ui/button";
 import { Divider } from "@druid-ui/divider";
+import { LogOut } from "lucide-react";
 
 const meta = {
   title: "Menu",
@@ -22,13 +23,13 @@ export const Default: Story = {
       <MenuList>
         {["Home", "Blog", "Shop"].map((item) => (
           <MenuListItem key={item}>
-            <Button as="link" href="#" fullWidth className="justify-start">
+            <Button as="link" href="#" className="justify-start">
               {item}
             </Button>
           </MenuListItem>
         ))}
         <MenuListItem>
-          <Button as="link" href="#" active fullWidth className="justify-start">
+          <Button as="link" href="#" active className="justify-start">
             Contact
           </Button>
         </MenuListItem>
@@ -44,7 +45,7 @@ export const WithSections: Story = {
       <MenuList>
         {["Facebook", "Twitter", "Instagram"].map((item) => (
           <MenuListItem key={item}>
-            <Button as="link" href="#" fullWidth className="justify-start">
+            <Button as="link" href="#" className="w-full justify-start">
               {item}
             </Button>
           </MenuListItem>
@@ -55,7 +56,7 @@ export const WithSections: Story = {
       <MenuList>
         {["Profile", "Settings"].map((item) => (
           <MenuListItem key={item}>
-            <Button as="link" href="#" fullWidth className="justify-start">
+            <Button as="link" href="#" className="w-full justify-start">
               {item}
             </Button>
           </MenuListItem>
@@ -67,8 +68,8 @@ export const WithSections: Story = {
         href="#"
         color="danger"
         variant="text"
-        fullWidth
-        className="justify-start"
+        className="w-full justify-between"
+        endIcon={<LogOut size={18} />}
       >
         Logout
       </Button>

@@ -48,9 +48,8 @@ const activeStyles = {
 type ButtonProps = {
   color?: ButtonColor;
   variant?: ButtonVariant;
-  icon?: ReactNode;
-  iconPlacement?: "left" | "right";
-  fullWidth?: boolean;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 } & (
   | (ButtonHTMLAttributes<HTMLButtonElement> & { as?: "button" })
   | (AnchorHTMLAttributes<HTMLAnchorElement> & { as: "link"; active?: boolean })
@@ -63,8 +62,8 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
       color = "default",
       variant = "default",
       children,
-      icon,
-      iconPlacement = "left",
+      startIcon,
+      endIcon,
       ...props
     },
     ref,
@@ -74,9 +73,8 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
       colorStyles[color][variant],
       clsx("h-9 px-3 py-1", {
         // Reducing horizontal padding keeps the visual weight of the button balanced.
-        ["pl-2"]: icon && iconPlacement === "left",
-        ["pr-2"]: icon && iconPlacement === "right",
-        ["w-full"]: props.fullWidth,
+        ["pl-2"]: startIcon,
+        ["pr-2"]: endIcon,
         [activeStyles[color][variant]]: props.as === "link" && props.active,
       }),
       className,
@@ -85,7 +83,7 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
     if (props.as === "link") {
       return (
         <a ref={ref} className={classes} {...props}>
-          <ButtonContent icon={icon} iconPlacement={iconPlacement}>
+          <ButtonContent startIcon={startIcon} endIcon={endIcon}>
             {children}
           </ButtonContent>
         </a>
@@ -94,7 +92,7 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
 
     return (
       <button ref={ref} className={classes} {...props}>
-        <ButtonContent icon={icon} iconPlacement={iconPlacement}>
+        <ButtonContent startIcon={startIcon} endIcon={endIcon}>
           {children}
         </ButtonContent>
       </button>
@@ -104,14 +102,14 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
 
 function ButtonContent({
   children,
-  icon,
-  iconPlacement,
-}: Pick<ButtonProps, "children" | "iconPlacement" | "icon">) {
+  startIcon,
+  endIcon,
+}: Pick<ButtonProps, "children" | "startIcon" | "endIcon">) {
   return (
     <>
-      {iconPlacement === "left" && icon}
+      {startIcon}
       {children}
-      {iconPlacement === "right" && icon}
+      {endIcon}
     </>
   );
 }
