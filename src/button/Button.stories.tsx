@@ -5,6 +5,7 @@ import { Box } from "lucide-react";
 import {
   ButtonColor,
   buttonColors,
+  ButtonVariant,
   buttonVariants,
 } from "@druid-ui/button/types.ts";
 import Spinner from "@druid-ui/spinner/Spinner.tsx";
@@ -113,18 +114,28 @@ export const Variants: Story = {
 export const WithIcon: Story = { args: { icon: <Box size={18} /> } };
 
 export const WithSpinner: Story = {
-  render: ({ color = "default", ...args }: ComponentProps<typeof Button>) => {
+  render: ({
+    color = "default",
+    variant = "default",
+    ...args
+  }: ComponentProps<typeof Button>) => {
     const buttonSpinnerColor = {
-      default: "default",
-      primary: "light",
-      danger: "light",
-    } satisfies Record<ButtonColor, SpinnerColor>;
+      default: { default: "default", text: "default" },
+      primary: { default: "light", text: "primary" },
+      danger: { default: "light", text: "danger" },
+    } satisfies Record<ButtonColor, Record<ButtonVariant, SpinnerColor>>;
 
     return (
       <Button
         {...args}
         color={color}
-        icon={<Spinner color={buttonSpinnerColor[color]} className="h-6 w-6" />}
+        variant={variant}
+        icon={
+          <Spinner
+            color={buttonSpinnerColor[color][variant]}
+            className="h-6 w-6"
+          />
+        }
       >
         Loading
       </Button>

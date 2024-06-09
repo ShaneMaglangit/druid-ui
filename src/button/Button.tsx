@@ -30,7 +30,7 @@ const colorStyles = {
   },
 } satisfies Record<ButtonColor, Record<ButtonVariant, string>>;
 
-const activeColorStyles = {
+const activeStyles = {
   default: {
     default: "bg-gray-100 dark:bg-gray-800",
     text: "bg-gray-100 dark:bg-gray-800",
@@ -77,8 +77,7 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
         ["pl-2"]: icon && iconPlacement === "left",
         ["pr-2"]: icon && iconPlacement === "right",
         ["w-full"]: props.fullWidth,
-        [activeColorStyles[color][variant]]:
-          props.as === "link" && props.active,
+        [activeStyles[color][variant]]: props.as === "link" && props.active,
       }),
       className,
     );
