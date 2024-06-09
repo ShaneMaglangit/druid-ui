@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { InfoIcon, TriangleAlert } from "lucide-react";
 import { bannerVariants } from "@druid-ui/banner/types.ts";
 import Banner from "@druid-ui/banner/index.ts";
 
@@ -32,21 +31,18 @@ export const Default: Story = {};
 export const Info: Story = {
   args: {
     variant: "info",
-    icon: <InfoIcon className="my-0.5 ml-0.5" />,
   },
 };
 
 export const Danger: Story = {
   args: {
     variant: "danger",
-    icon: <TriangleAlert className="my-0.5 ml-0.5" />,
   },
 };
 
 export const Warning: Story = {
   args: {
     variant: "warning",
-    icon: <TriangleAlert className="my-0.5 ml-0.5" />,
   },
 };
 

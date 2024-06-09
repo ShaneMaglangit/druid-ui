@@ -1,7 +1,7 @@
-import { forwardRef, HTMLAttributes, ReactNode } from "react";
+import { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@druid-ui/util.ts";
 import { BannerVariant } from "@druid-ui/banner/types.ts";
-import { Slot } from "@radix-ui/react-slot";
+import { InfoIcon, TriangleAlert } from "lucide-react";
 
 const baseStyle =
   "flex items-start gap-2 rounded-md border border-gray-200 p-3 font-medium dark:border-gray-700";
@@ -12,13 +12,18 @@ const colorStyles = {
   warning: "bg-warning-200 bg-opacity-20 text-warning-500",
 } satisfies Record<BannerVariant, string>;
 
+const variantIcon = {
+  info: <InfoIcon className="h-5 w-5" />,
+  danger: <TriangleAlert className="h-5 w-5" />,
+  warning: <TriangleAlert className="h-5 w-5" />,
+};
+
 type BannerProps = HTMLAttributes<HTMLDivElement> & {
-  icon?: ReactNode;
   variant?: BannerVariant;
 };
 
 const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
-  { variant = "info", className, icon, children, ...props },
+  { variant = "info", className, children, ...props },
   ref,
 ) {
   return (
@@ -27,7 +32,7 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
       className={cn(baseStyle, colorStyles[variant], className)}
       {...props}
     >
-      {icon && <Slot className="h-5 w-5 flex-shrink-0">{icon}</Slot>}
+      <div className="my-0.5 ml-0.5 flex-shrink-0">{variantIcon[variant]}</div>
       {children}
     </div>
   );
