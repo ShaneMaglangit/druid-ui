@@ -9,6 +9,18 @@ export default {
   ],
   darkMode: "class",
   theme: {
+    fontFamily: {
+      sans: [
+        "Inter",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji",
+      ],
+    },
     extend: {
       colors: {
         black: {
@@ -76,6 +88,9 @@ export default {
             strokeDashoffset: -30,
           },
         },
+      },
+      zIndex: {
+        modal: "1000", // ideally always within 1000-1500 range
       },
     },
   },

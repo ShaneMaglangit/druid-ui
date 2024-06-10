@@ -32,7 +32,7 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
       className={cn(baseStyle, colorStyles[variant], className)}
       {...props}
     >
-      <div className="my-0.5 ml-0.5 flex-shrink-0">{variantIcon[variant]}</div>
+      <div className="flex-shrink-0">{variantIcon[variant]}</div>
       {children}
     </div>
   );
