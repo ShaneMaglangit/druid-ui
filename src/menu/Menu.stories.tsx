@@ -23,13 +23,13 @@ export const Default: Story = {
       <MenuList>
         {["Home", "Blog", "Shop"].map((item) => (
           <MenuListItem key={item}>
-            <Button as="link" href="#" className="justify-start">
+            <Button as="link" href="#" className="w-full justify-start">
               {item}
             </Button>
           </MenuListItem>
         ))}
         <MenuListItem>
-          <Button as="link" href="#" active className="justify-start">
+          <Button as="link" href="#" active className="w-full justify-start">
             Contact
           </Button>
         </MenuListItem>
